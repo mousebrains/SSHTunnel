@@ -1,0 +1,6 @@
+{ # Hostname to port map
+  "arc0": 11000,
+  "arc1": 11001,
+  "arc2": 11002,
+  "arc3": 11003,
+}
