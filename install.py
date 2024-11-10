@@ -34,7 +34,8 @@ grp.add_argument("--hostname", type=str, default="arcterx", help="Remote hostnam
 grp.add_argument("--port", type=int, help="Port number on remote host")
 grp.add_argument("--username", type=str, help="Local user to run service as")
 grp.add_argument("--group", type=str, help="Local group to run service as")
-grp.add_argument("--logfile", type=str, default="SSHtunnel.log",
+grp.add_argument("--logfile", type=str, 
+        default=os.path.join(os.path.abspath(os.path.expanduser("~/logs")), "SSHtunnel.log"),
         help="Local logfile directory")
 grp.add_argument("--directory", type=str, help="Directory to change to for running the service")
 grp.add_argument("--restartSeconds", type=int, default=300,
@@ -75,7 +76,7 @@ if args.group is None: # Get this process's group
     args.group = args.username
 
 if args.directory is None: # working directory to move to
-    args.directory = os.path.expanduser(f"~{args.username}/logs")
+    args.directory = os.path.dirname(os.path.abspath(__file__))
 
 with open(os.path.join(root, args.template), "r") as fp: 
     input = fp.read() # Load the entire template
