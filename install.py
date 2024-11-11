@@ -76,7 +76,7 @@ if args.group is None: # Get this process's group
     args.group = args.username
 
 if args.directory is None: # working directory to move to
-    args.directory = os.path.dirname(os.path.abspath(__file__))
+    args.directory = "~/logs"
 
 with open(os.path.join(root, args.template), "r") as fp: 
     input = fp.read() # Load the entire template
@@ -109,7 +109,7 @@ if not args.force and os.path.exists(fn):
 
 if not os.path.isdir(wd):
     print("Making", wd)
-    os.makedirs(args.directory, mode=0o755)
+    os.makedirs(wd, mode=0o755)
 
 # Write to a temporary file, then copy as root via sudo
 with NamedTemporaryFile(mode="w") as fp:
