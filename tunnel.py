@@ -31,7 +31,12 @@ args = parser.parse_args()
 
 Logger.mkLogger(args)
 
-cmd = [args.ssh, "-N", "-x", "-T"]
+cmd = [args.ssh, 
+       "-N",  # Do not execute remote command
+       "-x",  # Disable X11 forwarding
+       "-T",  # Disable pseudo-terminal allocation
+       "-o", "ExitOnForwardFailure=yes", # If tunnel can't be set up exit
+       ]
 
 if args.identity:
     cmd.extend(("-i", args.identity))
