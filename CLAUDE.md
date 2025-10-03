@@ -88,8 +88,8 @@ sudo journalctl -u SSHtunnel.service -n 50
 - Subprocess failures should log return code, stdout, and stderr
 
 ### Compatibility
-- Python 3.9+ required
-- Uses `Optional[str]` type hints (not `str | None`) for Python 3.9 compatibility
+- Python 3.10+ required
+- Uses `Optional[str]` type hints (not `str | None`) for backward compatibility
 - Executable paths use `shutil.which()` for cross-platform compatibility (BSD, NixOS, etc.)
 - `os.makedirs()` calls use `exist_ok=True` to prevent race conditions
 
