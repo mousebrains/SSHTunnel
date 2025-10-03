@@ -24,8 +24,7 @@ import yaml
 
 def find_executable(name: str, fallback: str) -> str:
     """Find executable in PATH, falling back to common location."""
-    from typing import Optional
-    found: Optional[str] = shutil.which(name)
+    found: str | None = shutil.which(name)
     return found if found else fallback
 
 def barebones(content: str) -> list[str]:
